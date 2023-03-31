@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Main page</title>
 </head>
 <body>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+<a href="/"><< Назад</a>
 <p>Финансируемые проекты по странам.</p>
 <p> Режим обработки:  <a href="/funded_projects">однопоточный,</a> <a href="/funded_projects?type=many">многопоточный.</a> </p>
 <hr>

@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Spring Security Example </title>
+    <title>Регистрация</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/form.css}">
+
 </head>
 <body>
-Add new user
-<form th:action="@{/registration}" method="post">
-    <div><label> User Name : <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
+<div class="login">
+    <div class="form">
+        <h2>Регистрация</h2>
+        <p th:if="${param.error}">
+            Неверные имя пользователя или пароль.
+        </p>
+        <p th:if="${param.logout}">
+            Вы вышли из системы.
+        </p>
+        <form th:action="@{/registration}" method="post">
+            <input type="text" name="username" placeholder="Username">
+            <input type="password"  name="password"placeholder="Password">
+            <input type="submit" value="Зарегистрироваться" class="submit">
+            <a href="/login" class="registr">Войти</a>
+        </form>
+    </div>
+</div>
 </body>
 </html>

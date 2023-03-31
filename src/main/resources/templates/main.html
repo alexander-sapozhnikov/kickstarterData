@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Main page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/button.css}">
 </head>
 <body>
 
 <form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
+    <input type="submit" value="Выйти" class="btn"/>
 </form>
 <a href="/"><< Назад</a>
 <p>Финансируемые проекты по странам.</p>

@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Самые финансируемые и плохо финансируемые проекты по странам</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<a href="/"><< Назад</a>
+<h1>Самые финансируемые и плохо финансируемые проекты по странам</h1>
+<div th:if="${isSingle}">
+  <h3>Обратка в однопоточном режиме</h3>
+</div>
+<div th:unless="${isSingle}">
+  <h3>Обратка в многопоточном режиме</h3>
+</div>
+
+<table style="width: 100%">
+<thead>
+<tr>
+  <th>Название стран</th>
+  <th>Кол-во подержавших</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="el : ${data}">
+  <td th:text="${el.country}"></td>
+  <td th:text="${el.countSupported}"></td>
+</tr>
+</tbody>
+</table>
+
+<p th:text="'Время исполнения: ' + ${timeExecute} + ' ms'" />
+</body>
+</html>

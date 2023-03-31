@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Среднее количество людей поддержавших проекты по странам и категориям</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<a href="/"><< Назад</a>
+<h1>Среднее количество людей поддержавших проекты по странам и категориям</h1>
+<div th:if="${isSingle}">
+  <h3>Обратка в однопоточном режиме</h3>
+</div>
+<div th:unless="${isSingle}">
+  <h3>Обратка в многопоточном режиме</h3>
+</div>
+
+<table style="width: 100%">
+<thead>
+<tr>
+  <th>Название стран</th>
+  <th>Название категорий</th>
+  <th>Среднее число</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="el : ${data}">
+  <td th:text="${el.countryAndCategory.country}"></td>
+  <td th:text="${el.countryAndCategory.category}"></td>
+  <td th:text="${el.average}"></td>
+</tr>
+</tbody>
+</table>
+
+<p th:text="'Время исполнения: ' + ${timeExecute} + ' ms'"></p>
+</body>
+</html>

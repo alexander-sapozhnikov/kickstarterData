@@ -1,6 +1,6 @@
 package com.sapozhnikov.kickstarterData.producer;
 
-import com.sapozhnikov.kickstarterData.repository.CsvData;
+import com.sapozhnikov.kickstarterData.repository.CsvRepository;
 import org.apache.commons.csv.CSVRecord;
 
 import java.util.concurrent.BlockingQueue;
@@ -25,7 +25,7 @@ public class SplitProducer implements Runnable{
 
     @Override
     public void run(){
-        CsvData data =  new CsvData();
+        CsvRepository data =  new CsvRepository();
         data.run();
         BlockingQueue<CSVRecord> queue = data.getQueue();
         while (true){

@@ -1,7 +1,7 @@
 package com.sapozhnikov.kickstarterData.service;
 
 import com.sapozhnikov.kickstarterData.consumer.SimpleConsumer;
-import com.sapozhnikov.kickstarterData.repository.CsvData;
+import com.sapozhnikov.kickstarterData.repository.CsvRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SimpleStatisticsService<C extends SimpleConsumer, E extends Comparable<E>> {
     static final Logger log = LoggerFactory.getLogger(SimpleStatisticsService.class);
 
-    private CsvData csvData = null;
+    private CsvRepository csvRepository = null;
     private static Collection<Thread>  allThreadCollection;
     private final ConcurrentHashMap<String, E> parsedData;
 
@@ -46,8 +46,8 @@ public class SimpleStatisticsService<C extends SimpleConsumer, E extends Compara
     }
 
     private  void createAndStartProducers(){
-        csvData = new CsvData();
-        Thread producerThread = new Thread(csvData,"read_data");
+        csvRepository = new CsvRepository();
+        Thread producerThread = new Thread(csvRepository,"read_data");
         producerThread.start();
         allThreadCollection.add(producerThread);
     }
@@ -57,7 +57,7 @@ public class SimpleStatisticsService<C extends SimpleConsumer, E extends Compara
         for (int i = 0; i <= count; i++) {
             C consumer = null;
             try {
-                consumer = this.clazz.getDeclaredConstructor(csvData.getClass(), parsedData.getClass()).newInstance(csvData, parsedData);
+                consumer = this.clazz.getDeclaredConstructor(csvRepository.getClass(), parsedData.getClass()).newInstance(csvRepository, parsedData);
             } catch (Exception e) {
                 log.error(e.getMessage());
             }

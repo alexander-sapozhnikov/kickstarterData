@@ -15,8 +15,8 @@
             Вы вышли из системы.
         </p>
         <form th:action="@{/login}" method="post">
-            <input type="text" name="username" placeholder="Username">
-            <input type="password"  name="password"placeholder="Password">
+            <input type="text" name="username" placeholder="Логин">
+            <input type="password"  name="password"placeholder="Пароль">
             <input type="submit" value="Войти" class="submit">
             <a href="/registration" class="registr">Зарегистрироваться</a>
         </form>

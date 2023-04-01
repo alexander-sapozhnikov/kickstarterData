@@ -17,12 +17,12 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class CsvData implements Runnable{
-    static final Logger log = LoggerFactory.getLogger(CsvData.class);
+public class CsvRepository implements Runnable{
+    static final Logger log = LoggerFactory.getLogger(CsvRepository.class);
     private final BlockingQueue<CSVRecord> queue;
     private boolean isAll = false;
 
-    public CsvData() {
+    public CsvRepository() {
         queue = new LinkedBlockingDeque<>();
     }
 

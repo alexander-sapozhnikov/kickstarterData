@@ -2,7 +2,7 @@ package com.sapozhnikov.kickstarterData.service;
 
 import com.sapozhnikov.kickstarterData.entity.AverageByCountryAndCategory;
 import com.sapozhnikov.kickstarterData.entity.CountryAndCategory;
-import com.sapozhnikov.kickstarterData.repository.CsvData;
+import com.sapozhnikov.kickstarterData.repository.CsvRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,11 +12,11 @@ import java.util.stream.Collectors;
 public class AverageByCountryAndCategoryService {
 
     public List<AverageByCountryAndCategory> calcSingle() {
-        CsvData csvData = new CsvData();
-        csvData.run();
+        CsvRepository csvRepository = new CsvRepository();
+        csvRepository.run();
 
         HashMap<CountryAndCategory, AverageByCountryAndCategory> res =
-                (HashMap<CountryAndCategory, AverageByCountryAndCategory>) csvData.
+                (HashMap<CountryAndCategory, AverageByCountryAndCategory>) csvRepository.
                         getQueue().
                         stream().
                         collect(Collectors.toMap(
@@ -37,11 +37,11 @@ public class AverageByCountryAndCategoryService {
     }
 
     public List<AverageByCountryAndCategory> calcMulti() {
-        CsvData csvData = new CsvData();
-        csvData.run();
+        CsvRepository csvRepository = new CsvRepository();
+        csvRepository.run();
 
         HashMap<CountryAndCategory, AverageByCountryAndCategory> res =
-                (HashMap<CountryAndCategory, AverageByCountryAndCategory>) csvData.
+                (HashMap<CountryAndCategory, AverageByCountryAndCategory>) csvRepository.
                         getQueue().
                         stream().
                         parallel().
